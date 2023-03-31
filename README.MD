@@ -114,3 +114,6 @@ Al lanzar los tests de selenium pasa lo siguiente:
         # Ejecuta el assert de la prueba
         self.assertEqual(display,"0") 
 ```
+#### Ejemplo de ejecucion
+
+![result_selenium](./docs/selenium_result.png)

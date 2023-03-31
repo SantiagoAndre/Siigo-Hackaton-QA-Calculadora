@@ -24,13 +24,18 @@ class CalculatorSeleniumGateway:
         buttons = self.driver.find_elements(By.XPATH,'//button[@class="Button"]')
         sleep(0.5)
         self.map_buttons = {}
+        print("Mapeando botones de la calculadora: ....")
         for b in buttons:
             b.click()
             sleep(0.1)
             b_value = self.display.get_attribute("value")
             self.map_buttons[str(b_value)] = b
             self.delete_b.click()
+            print(f"boton {b_value} mapeado...")
+
+        print("Boton * mapeado: ....")
         self.map_buttons["*"] = self.driver.find_element(By.CLASS_NAME,"Multiply")
+        print("Boton enviar mapeado: ....")
         self.send_button = self.driver.find_element(By.NAME,"equal")
     def press_button(self,key):
         key = str(key)
@@ -46,31 +51,3 @@ class CalculatorSeleniumGateway:
         self.send_button.click()
     def get_display(self):
         return self.display.get_attribute("value")
-
-
-class TestCalculator(unittest.TestCase):
- 
-    def tes(self):
-        self.driver = webdriver.Chrome()
-        self.driver.get("http://localhost:8001/")
- 
-    def test_suma(self):
-        calculator.input
-
-        display = gataway.get_display()
-        num1 = self.driver.find_element_by_id("num1")
-        num2 = self.driver.find_element_by_id("num2")
-        resultado_esperado = "6"
- 
-        num1.send_keys("2")
-        num2.send_keys("4")
-        num2.send_keys(Keys.RETURN)
- 
-        resultado = self.driver.find_element_by_id("resultado")
-        self.assertEqual(resultado.text, resultado_esperado)
- 
-    def tearDown(self):
-        self.driver.quit()
- 
-# if __name__ == '__main__':
-#     unittest.main()

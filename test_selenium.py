@@ -2,7 +2,6 @@ from gateways.selenium import CalculatorSeleniumGateway
 import unittest
 
 global_calculator = CalculatorSeleniumGateway()
-from time import sleep
 class TestSelenium(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
         super().__init__(methodName)
@@ -23,7 +22,6 @@ class TestSelenium(unittest.TestCase):
         self.calculator.input_number(3)
         self.calculator.operate()
         display = self.calculator.get_display()
-        print(display)
         self.calculator.delete(4)
         self.assertEqual("6",display)
     def test_case_1_multiply(self):
@@ -33,7 +31,6 @@ class TestSelenium(unittest.TestCase):
         self.calculator.input_number(3)
         self.calculator.operate()
         display = self.calculator.get_display()
-        print(display)
         self.calculator.delete(4)
         self.assertEqual("9",display)
     def test_case_1_resta(self):
@@ -60,10 +57,13 @@ class TestSelenium(unittest.TestCase):
         self.calculator.input_number(6)
         self.calculator.press_button("/")
         self.calculator.operate()
+        disabled  = self.calculator.send_button.get_property("disabled")
+
         display = self.calculator.get_display()
-        print(display)
         self.calculator.delete(4)
         self.assertEqual("6/",display)
+        self.assertTrue(disabled)
+
     def test_case_8(self):
         '''El usuario intenta hacer una divicion por 0'''
         #case 8
