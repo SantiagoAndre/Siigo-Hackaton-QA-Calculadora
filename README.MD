@@ -117,3 +117,9 @@ Al lanzar los tests de selenium pasa lo siguiente:
 #### Ejemplo de ejecucion
 
 ![result_selenium](./docs/selenium_result.png)
+
+
+
+### Nota:
+
+No alcanzamos a hacer la parte de los reportes graficos, seria usar un plugin que se enlace a pytest, pero iniciamos dos horas tarde a trabajar en la hackaton 😜.
